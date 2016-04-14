@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ "$#" != "3" ]; then
+    echo "Usage: ./wav2hdr input.wav output.h sample_rate"
+    exit 1
+fi
+
+if which ffmpeg > /dev/null; then
+    ffmpeg -i $1 -acodec pcm_s16le known_format.wav || exit 1
+    ffmpeg -i known_format.wav -f s16le -ar $3 -acodec pcm_u8 temp.pcm || exit 1
+    rm known_format.wav
+    ./pcm2h temp.pcm $2
+    rm temp.pcm
+else
+    echo "Error: 'ffmpeg' not found on your machine... please install 'ffmpeg'"
+fi
+

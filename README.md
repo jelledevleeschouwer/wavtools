@@ -3,7 +3,7 @@
 ------
 
 ##### Description
-Every wanted to play audio on an 8-bit microcontroller? This is possible by using the hardware PWM-module of your microcontroller;
+Ever wanted to play audio on an 8-bit microcontroller? This is possible by using the hardware PWM-module of your microcontroller;
 
 1. You configure your PWM to work at a fixed (high) frequency of something around 100 kHz.
 2. Configure a hardware timer module to give an interrupt at the rate of the sampling frequency (e.g. 8000 Hz).
